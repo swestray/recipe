@@ -1,0 +1,23 @@
+body{
+	background-color: #e57100;
+}
+.nav>li>a{
+	color:#ffd171;
+	font-size: 20px;
+}
+.nav>li>a:hover,
+.nav>li>a:focus {
+    text-decoration: none;
+    background-color: #ffd171;
+    color:#cb2e01;
+}
+.nav>li>a.active{
+	background-color: #ffd171;
+	color:#e57100;
+}
+.ng-invalid.ng-dirty{
+  border-color: red
+}
+.ng-valid.ng-dirty{
+  border-color: green
+};
