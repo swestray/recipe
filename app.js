@@ -19,7 +19,7 @@
 			steps: [
 			'add the yogurt', 'do it bitch', 'add the bitch!'
 			],
-			yums:3
+			score:3
 		},
 		{
 			name: "poopoo",
@@ -40,7 +40,7 @@
 			steps: [
 			'toss it bout', 'get it going', 'bossa nova'
 			],
-			yums:2
+			score:2
 		},
 		{
 			name: "margot",
@@ -48,7 +48,7 @@
 			picture:"",
 			ingredients:[],
 			steps:[],
-			yums:1
+			score:1
 		},
 	];
 	var users = { name: 'Stone', isLoggedIn: true};
@@ -69,7 +69,6 @@
   		};
   	});
 
-
 	app.controller('UserController', function(){
 		this.product = users;
 	});
@@ -77,11 +76,54 @@
 	app.controller('RecipeController', function(){
 		this.product = recipes;
 
-		this.addRecipe = function(product){
-			product.push(this);
-			this.product = {};
-		}
 	});
+
+	app.controller('YumController', function(){
+		var isYummed = false;
+		var isYucked = false;
+
+		this.yum = function (product) {
+			if(isYummed){
+				isYummed = false;
+				this.yumButton = 'yum';
+				product.score -= 1
+
+			}
+			else if(isYucked){
+				isYucked = false;
+				isYummed = true;
+				this.yumButton = 'YUM';
+				this.yuckButton = 'yuck';
+				product.score += 2;
+			}
+			else{
+				isYummed = true;
+				this.yumButton = 'YUM'
+				product.score += 1;
+			}
+		};
+		this.yuck = function (product) {
+			if(isYucked){
+				isYucked = false;
+				this.yuckButton = 'yuck'
+				product.score += 1;
+			}
+			else if(isYummed){
+				isYummed = false;
+				isYucked = true;
+				this.yuckButton = 'YUCK';
+				this.yumButton = 'yum';
+				product.score -= 2;
+			}
+			else{
+				isYucked = true;
+				this.yuckButton = 'YUCK'
+				product.score -= 1;
+			}
+		};
+
+	});
+
 
 	app.controller('TabController', function(){
 	    this.tab = 1;

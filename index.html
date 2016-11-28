@@ -51,7 +51,24 @@
           <h1 style="letter-spacing: 6px; color:#ffd171"><strong>{{product.name | uppercase}}</strong></h1>
           <h4 style="color:#ffd171">{{product.description}}</h4>
         </div>
+
+        <!--YUM AND YUCK BUTTONS-->
+
+        <div ng-controller='YumController as yumCtrl'>
+          <button class='btn pull-right' ng-click='yumCtrl.yum(product)' ng-init="yumCtrl.yumButton='yum';">
+            {{yumCtrl.yumButton}}
+          </button>
+          <h1 style="color:white">{{product.score}}</h1>
+
+          <button class='btn pull-right' ng-click='yumCtrl.yuck(product)' ng-init="yumCtrl.yuckButton='yuck';">
+            {{yumCtrl.yuckButton}}
+          </button>
+        </div>
+
+        <!--COLLAPSE BUTTON-->
         <button href="#{{product.name}}" class="btn btn-info" data-toggle="collapse"></button>
+
+        <!--COLLAPSE-->
         <div id="{{product.name}}" class="collapse">
           <recipe-photo></recipe-photo class='row'>
 
