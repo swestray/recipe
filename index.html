@@ -149,7 +149,7 @@
 
     </div><!--container end-->
 
-    <!--COLLAPSE BUTTON-->
+    <!--ADD RECIPE COLLAPSE BUTTON-->
     <button style='background-color:#9b350d; border-color:#9b350d' href="#addRecipe" class="btn btn-info" data-toggle="collapse">
       <i style="font-size:3.5em; color:#ffd171" class='glyphicon glyphicon-plus'></i>
     </button>
@@ -162,10 +162,13 @@
         <div class="text-center">
           <h1 style="letter-spacing: 6px; color:#ffd171"><strong>{{name | uppercase}}</strong></h1>
           <h4 style="color:#ffd171">{{description}}</h4>
+          <img class="img-responsive img-rounded" ng-src="{{recipe.newRecipe.picture}}">
         </div>
         <div>
-          <input ng-model='name' type="text" placeholder='Title' name="" required>
+          <input ng-model='name' type="text" placeholder='Title' name="">
           <input ng-model='description' type="text" placeholder='description' name="">
+          <input type="text" placeholder="pictureUrl" name="">
+          <button ng-click="recipe.newRecipe.picture = 'https://static.pexels.com/photos/7976/pexels-photo.jpg'">upload</button>
         </div>
       </form>
 

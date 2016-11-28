@@ -75,7 +75,25 @@
 
 	app.controller('RecipeController', function(){
 		this.product = recipes;
-
+		this.newRecipe = {
+			name: "",
+			description: "",
+			picture:"https://farm4.staticflickr.com/3261/2801924702_ffbdeda927_d.jpg",
+			ingredients:[],
+			steps:[],
+			score: 0
+		};
+		this.addRecipe = function(product){
+			recipes.push(product);
+			this.newRecipe = {
+				name: "",
+				description: "",
+				picture:"",
+				ingredients:[],
+				steps:[],
+				score: 0
+			};
+		};
 	});
 
 	app.controller('YumController', function(){
