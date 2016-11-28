@@ -76,11 +76,18 @@
 	app.controller('RecipeController', function(){
 		this.product = recipes;
 		this.newRecipe = {
-			name: "",
-			description: "",
+			name: "shit",
+			description: "bitch",
 			picture:"https://farm4.staticflickr.com/3261/2801924702_ffbdeda927_d.jpg",
-			ingredients:[],
+			ingredients:[
+				{
+					quantity:1,
+					unit: 'berry',
+					item: 'boy'
+				}
+			],
 			steps:[],
+			reviews:['fucking sick braj', 'oh heck yes'],
 			score: 0
 		};
 		this.addRecipe = function(product){
@@ -91,6 +98,7 @@
 				picture:"",
 				ingredients:[],
 				steps:[],
+				reviews:[],
 				score: 0
 			};
 		};
@@ -171,6 +179,15 @@
 			product.steps.push(this.step);
 			this.step = {};
 		};
+	});
+
+	app.controller('ReviewController', function(){
+		this.review = {};
+
+		this.addReview = function(product){
+			product.reviews.push(this.review);
+			this.review = {};
+		}
 	});
 
 })();

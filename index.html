@@ -134,13 +134,33 @@
                 </div>
               </form>
 
-
-
             </div>
 
             <!--REVIEW TAB-->
             <div ng-show="tab.isSet(3)">
-              <h4>Reviews</h4>
+              <!--STEPS-->
+              <div ng-repeat="reivew in product.reviews">
+                <div style ='background-color:#ffd171; border-color: #ffd171; color:#9b350d' class="well-sm row text-center">
+                    <h3>{{review}}</h3>
+                </div>
+              </div><!--ng-repeat end-->
+
+              <!--STEP FORM-->
+              <form ng-submit='reviewCtrl.addStep(product)' ng-controller='ReviewController as reviewCtrl' name='reviwForm'>
+                <!--  Live Preview -->
+                <div style ='background-color:#cb2e01; border-color: #cb2e01; color:#ffd171;' class="well-sm row text-center">
+                  <h3>{{reviewCtrl.review}}</h3>
+                </div>
+                <div style ='background-color:#ffd171; border-color: #ffd171; color:#9b350d' class="well-sm row text-center">
+                  <textarea ng-model='reviewCtrl.review'></textarea>
+                </div>
+                <!--ADD STEP-->
+                <div class="row text-center">
+                  <button style='background-color:#cb2e01' type="submit" class="btn">
+                    <i style="font-size:3.5em; color:#ffd171" class='glyphicon glyphicon-plus'></i>
+                  </button>
+                </div>
+              </form>
             </div>
           </section>
 
@@ -167,8 +187,8 @@
         <div>
           <input ng-model='name' type="text" placeholder='Title' name="">
           <input ng-model='description' type="text" placeholder='description' name="">
-          <input type="text" placeholder="pictureUrl" name="">
-          <button ng-click="recipe.newRecipe.picture = 'https://static.pexels.com/photos/7976/pexels-photo.jpg'">upload</button>
+          <input ng-model='thePhoto' type="text" placeholder="pictureUrl" name="">
+          <button ng-click="recipe.newRecipe.picture = 'thePhoto'">upload</button>
         </div>
       </form>
 
@@ -187,7 +207,7 @@
             <div ng-show="tab.isSet(1)">
 
               <!--INGREDIENT-->
-              <div ng-repeat="ingredient in product.ingredients">
+              <div ng-repeat="ingredient in recipe.newRecipe.ingredients">
               <div style ='background-color:#ffd171; border-color: #ffd171; color:#9b350d' class="well row text-center">
                 <div class="col-xs-2 col-xs-offset-1">
                   <h3>{{ingredient.quantity}}</h3>
@@ -202,8 +222,44 @@
               </div><!--ng-repeat end-->
 
               <!--INGREDIENT FORM-->
-              <ingredient-form>
-              </ingredient-form>
+              <form ng-submit='ingredientCtrl.addIngredient(recipe.newRecipe)' ng-controller='IngredientController as ingredientCtrl' name='recipeForm'>
+                <!--  Live Preview -->
+                <div style ='background-color:#cb2e01; border-color: #cb2e01; color:#ffd171' class="well row text-center">
+                  <div class="col-xs-2 col-xs-offset-1">
+                    <h3>{{ingredientCtrl.ingredient.quantity}}</h3>
+                  </div>
+                  <div class="col-xs-2">
+                    <h3>{{ingredientCtrl.ingredient.unit}}</h3>
+                  </div>
+                  <div class="col-xs-6">
+                    <h3>{{ingredientCtrl.ingredient.item}}</h3>
+                  </div>
+                </div>
+                <!--FORM-->
+                <div style ='background-color:#ffd171; border-color: #ffd171; color:#9b350d' class="well row text-center">
+                  <div class="col-xs-2 col-xs-offset-1">
+                    <input ng-model='ingredientCtrl.ingredient.quantity' type="number" placeholder="Quantity" required>
+                  </div>
+                  <div class="col-xs-2">
+                    <select ng-model='ingredientCtrl.ingredient.unit' required>
+                      <option>Tsp</option>
+                      <option>Tbl</option>
+                      <option>Cup</option>
+                    </select>
+                  </div>
+                  <div class="col-xs-6">
+                    <input ng-model='ingredientCtrl.ingredient.item'type="text" placeholder="Ingredient" required>
+                  </div>
+                </div>
+
+                <!--ADD INGREDIENT-->
+                <div class="row text-center">
+                  <button style='background-color:#cb2e01' type="submit" class="btn">
+                    <i style="font-size:3.5em; color:#ffd171" class='glyphicon glyphicon-plus'></i>
+                  </button>
+                </div>
+
+              </form>
 
             </div>
 
@@ -211,7 +267,7 @@
             <div ng-show="tab.isSet(2)">
 
               <!--STEPS-->
-              <div ng-repeat="step in product.steps">
+              <div ng-repeat="step in recipe.newRecipe.steps">
                 <div style ='background-color:#ffd171; border-color: #ffd171; color:#9b350d' class="well row text-center">
                     <h3>{{step}}</h3>
                 </div>
@@ -219,11 +275,12 @@
 
               <!--STEP FORM-->
               
-              <form ng-submit='stepCtrl.addStep(product)' ng-controller='StepController as stepCtrl' name='stepForm'>
+              <form ng-submit='stepCtrl.addStep(recipe.newRecipe)' ng-controller='StepController as stepCtrl' name='stepForm'>
                 <!--  Live Preview -->
                 <div style ='background-color:#cb2e01; border-color: #cb2e01; color:#ffd171' class="well row text-center">
                   <h3>{{stepCtrl.step}}</h3>
                 </div>
+
                 <div style ='background-color:#ffd171; border-color: #ffd171; color:#9b350d' class="well row text-center">
                   <textarea ng-model='stepCtrl.step'></textarea>
                 </div>
@@ -241,11 +298,36 @@
 
             <!--REVIEW TAB-->
             <div ng-show="tab.isSet(3)">
-              <h4>Reviews</h4>
+              <!--REVIEWS-->
+              <div ng-repeat="review in recipe.newRecipe.reviews">
+                <div style ='background-color:#ffd171; border-color: #ffd171; color:#9b350d' class="well row text-center">
+                    <h3>{{review}}</h3>
+                </div>
+              </div><!--ng-repeat end-->
+
+              <!--REVIEW FORM-->
+              
+              <form ng-submit='reviewCtrl.addReview(recipe.newRecipe)' ng-controller='ReviewController as reviewCtrl' name='reviewForm'>
+                <!--  Live Preview -->
+                <div style ='background-color:#cb2e01; border-color: #cb2e01; color:#ffd171' class="well row text-center">
+                  <h3>{{reviewCtrl.review}}</h3>
+                </div>
+                <!--FORM-->
+                <div style ='background-color:#ffd171; border-color: #ffd171; color:#9b350d' class="well row text-center">
+                  <input ng-model='reviewCtrl.review' type="text" placeholder="Review" required>
+                </div>
+                <!--ADD STEP-->
+                <div class="row text-center">
+                  <button style='background-color:#cb2e01' type="submit" class="btn">
+                    <i style="font-size:3.5em; color:#ffd171" class='glyphicon glyphicon-plus'></i>
+                  </button>
+                </div>
+              </form>
             </div>
           </section>
           </div>
-          <button style='background-color:#cb2e01; font-size: 20px; color: #ffd171' type="submit" class="btn pull-right">
+          <!--SUBMIT RECIPE-->
+          <button ng-click="recipe.addRecipe(recipe.newRecipe)" style='background-color:#cb2e01; font-size: 20px; color: #ffd171' class="btn pull-right">
             Submit Recipe
           </button>
     </div><!--collaspe end-->
