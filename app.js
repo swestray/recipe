@@ -109,11 +109,11 @@
 
 		this.collapse = function(product){
 			if(collapsed){
-				this.collapseBtn = '^'
+				this.collapseBtn = 'glyphicon glyphicon-chevron-up'
 				collapsed = false;
 			}
 			else{
-				this.collapseBtn = 'down'
+				this.collapseBtn = 'glyphicon glyphicon-chevron-down'
 				collapsed = true;
 			}
 		}
