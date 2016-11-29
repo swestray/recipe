@@ -76,8 +76,8 @@
 	app.controller('RecipeController', function(){
 		this.product = recipes;
 		this.newRecipe = {
-			name: "",
-			description: "",
+			name: "tryna",
+			description: "do dat shi",
 			picture:"https://farm4.staticflickr.com/3261/2801924702_ffbdeda927_d.jpg",
 			ingredients:[
 				{
@@ -90,11 +90,11 @@
 			reviews:['fucking sick braj', 'oh heck yes'],
 			score: 0
 		};
-		this.addRecipe = function(product){
+		this.addRecipe = function(product, title, descript){
 			recipes.push(product);
 			this.newRecipe = {
-				name: "",
-				description: "",
+				name: title,
+				description: descript,
 				picture:"",
 				ingredients:[],
 				steps:[],
@@ -185,6 +185,9 @@
 			product.ingredients.push(this.ingredient);
 			this.ingredient = {};
 		};
+		this.removeIngredient = function(array, index){
+			array.splice(index, 1);
+		};
 	});
 
 	app.controller('StepController', function(){
@@ -193,6 +196,10 @@
 		this.addStep = function(product){
 			product.steps.push(this.step);
 			this.step = {};
+		};
+
+		this.removeStep = function(array, index){
+			array.splice(index, 1);
 		};
 	});
 

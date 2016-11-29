@@ -48,25 +48,24 @@
       <div style="background-color:#9b350d; border-color: #9b350d" class="well">
         <div class="row">
         <!--COLLAPSE BUTTON-->
-        <div class="col-xs-3" ng-controller="CollapseController as collapseCtrl">
+        <div class="col-xs-1" ng-controller="CollapseController as collapseCtrl">
           <button href="#{{product.name}}" ng-click='collapseCtrl.collapse()' class="btn btn-info" data-toggle="collapse" ng-init="collapseCtrl.collapseBtn = 'glyphicon glyphicon-chevron-down'">
-
-                    <i style="font-size:3.5em; color:#ffd171" class='{{collapseCtrl.collapseBtn}}'></i>
+            <i style="font-size:2.5em; color:#ffd171" class='{{collapseCtrl.collapseBtn}}'></i>
           </button>
         </div>
         <!--TITLE and DESCRIPTION-->
-        <div class="col-xs-6">
-          <h1 style="letter-spacing: 6px; color:#ffd171"><strong>{{product.name | uppercase}}</strong></h1>
+        <div class="text-center col-xs-9">
+          <h1 style="color:#ffd171"><strong>{{product.name | uppercase}}</strong></h1>
           <h4 style="color:#ffd171">{{product.description}}</h4>
         </div>
 
         <!--YUM AND YUCK BUTTONS-->
 
-        <div class="col-xs-3" ng-controller='YumController as yumCtrl'>
+        <div class="col-xs-1" ng-controller='YumController as yumCtrl'>
           <button class='btn pull-right' ng-click='yumCtrl.yum(product)' ng-init="yumCtrl.yumButton='yum';">
             {{yumCtrl.yumButton}}
           </button>
-          <h3 style="color:white">{{product.score}}</h3>
+          <h3 class="text-center" style="color:white">{{product.score}}</h3>
           <button class='btn pull-right' ng-click='yumCtrl.yuck(product)' ng-init="yumCtrl.yuckButton='yuck';">
             {{yumCtrl.yuckButton}}
           </button>
@@ -212,7 +211,7 @@
             <div ng-show="tab.isSet(1)">
 
               <!--INGREDIENT-->
-              <div ng-repeat="ingredient in recipe.newRecipe.ingredients">
+              <div ng-repeat="ingredient in recipe.newRecipe.ingredients" ng-controller='IngredientController as ingredientCtrl'>
               <div style ='background-color:#ffd171; border-color: #ffd171; color:#9b350d' class="well row text-center">
                 <div class="col-xs-2 col-xs-offset-1">
                   <h3>{{ingredient.quantity}}</h3>
@@ -222,6 +221,11 @@
                 </div>
                 <div class="col-xs-6">
                   <h3>{{ingredient.item}}</h3>
+                </div>
+                <div class="col-xs-1">
+                  <button type="button" ng-click="ingredientCtrl.removeIngredient(recipe.newRecipe.ingredients, $index)" style='background-color:#cb2e01' class="btn btn-circle">
+                    <i style="font-size:2.5em; color:#ffd171" class='glyphicon glyphicon-remove'></i>
+                  </button>
                 </div>
               </div>
               </div><!--ng-repeat end-->
@@ -236,7 +240,7 @@
                   <div class="col-xs-2">
                     <h3>{{ingredientCtrl.ingredient.unit}}</h3>
                   </div>
-                  <div class="col-xs-6">
+                  <div class="col-xs-5">
                     <h3>{{ingredientCtrl.ingredient.item}}</h3>
                   </div>
                 </div>
@@ -273,8 +277,15 @@
 
               <!--STEPS-->
               <div ng-repeat="step in recipe.newRecipe.steps">
-                <div style ='background-color:#ffd171; border-color: #ffd171; color:#9b350d' class="well row text-center">
-                    <h3>{{step}}</h3>
+                <div ng-controller='StepController as stepCtrl' style ='background-color:#ffd171; border-color: #ffd171; color:#9b350d' class="well row text-center">
+                    <div class="col-xs-11">
+                      <h3>{{step}}</h3>
+                    </div>
+                    <div class="col-xs-1">
+                      <button type="button" ng-click="stepCtrl.removeStep(recipe.newRecipe.steps, $index)" style='background-color:#cb2e01' class="btn btn-circle">
+                        <i style="font-size:2.5em; color:#ffd171" class='glyphicon glyphicon-remove'></i>
+                      </button>
+                    </div>
                 </div>
               </div><!--ng-repeat end-->
 
