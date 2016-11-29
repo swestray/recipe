@@ -46,27 +46,29 @@
       <!--RECIPE PAGE-->
       <div ng-repeat="product in recipe.product | orderBy:'-yums'">
       <div style="background-color:#9b350d; border-color: #9b350d" class="well">
+        <div class="row">
+        <!--COLLAPSE BUTTON-->
+        <div class="col-xs-3" ng-controller="CollapseController as collapseCtrl">
+          <button href="#{{product.name}}" ng-click='collapseCtrl.collapse()' class="btn btn-info" data-toggle="collapse" ng-init="collapseCtrl.collapseBtn = 'down'">{{collapseCtrl.collapseBtn}}</button>
+        </div>
         <!--TITLE and DESCRIPTION-->
-        <div class="text-center">
+        <div class="col-xs-6">
           <h1 style="letter-spacing: 6px; color:#ffd171"><strong>{{product.name | uppercase}}</strong></h1>
           <h4 style="color:#ffd171">{{product.description}}</h4>
         </div>
 
         <!--YUM AND YUCK BUTTONS-->
 
-        <div ng-controller='YumController as yumCtrl'>
+        <div class="col-xs-3" ng-controller='YumController as yumCtrl'>
           <button class='btn pull-right' ng-click='yumCtrl.yum(product)' ng-init="yumCtrl.yumButton='yum';">
             {{yumCtrl.yumButton}}
           </button>
-          <h1 style="color:white">{{product.score}}</h1>
-
+          <h3 style="color:white">{{product.score}}</h3>
           <button class='btn pull-right' ng-click='yumCtrl.yuck(product)' ng-init="yumCtrl.yuckButton='yuck';">
             {{yumCtrl.yuckButton}}
           </button>
         </div>
-
-        <!--COLLAPSE BUTTON-->
-        <button href="#{{product.name}}" class="btn btn-info" data-toggle="collapse"></button>
+        </div>
 
         <!--COLLAPSE-->
         <div id="{{product.name}}" class="collapse">

@@ -76,8 +76,8 @@
 	app.controller('RecipeController', function(){
 		this.product = recipes;
 		this.newRecipe = {
-			name: "shit",
-			description: "bitch",
+			name: "",
+			description: "",
 			picture:"https://farm4.staticflickr.com/3261/2801924702_ffbdeda927_d.jpg",
 			ingredients:[
 				{
@@ -102,6 +102,21 @@
 				score: 0
 			};
 		};
+	});
+
+	app.controller('CollapseController', function(){
+		var collapsed = true;
+
+		this.collapse = function(product){
+			if(collapsed){
+				this.collapseBtn = '^'
+				collapsed = false;
+			}
+			else{
+				this.collapseBtn = 'down'
+				collapsed = true;
+			}
+		}
 	});
 
 	app.controller('YumController', function(){
