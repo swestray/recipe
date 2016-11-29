@@ -19,6 +19,7 @@
 			steps: [
 			'add the yogurt', 'do it bitch', 'add the bitch!'
 			],
+			reviews: [],
 			score:3
 		},
 		{
@@ -40,6 +41,7 @@
 			steps: [
 			'toss it bout', 'get it going', 'bossa nova'
 			],
+			reviews:[],
 			score:2
 		},
 		{
@@ -48,6 +50,7 @@
 			picture:"",
 			ingredients:[],
 			steps:[],
+			reviews: [],
 			score:1
 		},
 	];

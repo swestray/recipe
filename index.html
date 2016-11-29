@@ -105,9 +105,9 @@
               </div>
               </div><!--ng-repeat end-->
 
-              <!--INGREDIENT FORM-->
+              <!--INGREDIENT FORM>
               <ingredient-form>
-              </ingredient-form>
+              </ingredient-form-->
 
             </div>
 
@@ -121,36 +121,36 @@
                 </div>
               </div><!--ng-repeat end-->
 
-              <!--STEP FORM-->
+              <!--STEP FORM>
               <form ng-submit='stepCtrl.addStep(product)' ng-controller='StepController as stepCtrl' name='stepForm'>
-                <!--  Live Preview -->
+                <!--  Live Preview >
                 <div style ='background-color:#cb2e01; border-color: #cb2e01; color:#ffd171;' class="well-sm row text-center">
                   <h3>{{stepCtrl.step}}</h3>
                 </div>
                 <div style ='background-color:#ffd171; border-color: #ffd171; color:#9b350d' class="well-sm row text-center">
                   <textarea ng-model='stepCtrl.step'></textarea>
                 </div>
-                <!--ADD STEP-->
+                <!--ADD STEP>
                 <div class="row text-center">
                   <button style='background-color:#cb2e01' type="submit" class="btn">
                     <i style="font-size:3.5em; color:#ffd171" class='glyphicon glyphicon-plus'></i>
                   </button>
                 </div>
-              </form>
+              </form-->
 
             </div>
 
             <!--REVIEW TAB-->
             <div ng-show="tab.isSet(3)">
               <!--STEPS-->
-              <div ng-repeat="reivew in product.reviews">
+              <div ng-repeat="review in product.reviews">
                 <div style ='background-color:#ffd171; border-color: #ffd171; color:#9b350d' class="well-sm row text-center">
                     <h3>{{review}}</h3>
                 </div>
               </div><!--ng-repeat end-->
 
               <!--STEP FORM-->
-              <form ng-submit='reviewCtrl.addStep(product)' ng-controller='ReviewController as reviewCtrl' name='reviwForm'>
+              <form ng-submit='reviewCtrl.addReview(product)' ng-controller='ReviewController as reviewCtrl' name='reviewForm'>
                 <!--  Live Preview -->
                 <div style ='background-color:#cb2e01; border-color: #cb2e01; color:#ffd171;' class="well-sm row text-center">
                   <h3>{{reviewCtrl.review}}</h3>
@@ -203,8 +203,6 @@
                 <a href ng-click="tab.setTab(1)">Ingredients</a></li>
               <li ng-class="{ active: tab.isSet(2) }">
                 <a href ng-click="tab.setTab(2)">Directions</a></li>
-              <li ng-class="{ active: tab.isSet(3) }">
-                <a href ng-click="tab.setTab(3)">Reviews</a></li>
             </ul>
 
             <!--INGREDIENT TAB-->
@@ -290,7 +288,6 @@
               </div><!--ng-repeat end-->
 
               <!--STEP FORM-->
-              
               <form ng-submit='stepCtrl.addStep(recipe.newRecipe)' ng-controller='StepController as stepCtrl' name='stepForm'>
                 <!--  Live Preview -->
                 <div style ='background-color:#cb2e01; border-color: #cb2e01; color:#ffd171' class="well row text-center">
@@ -308,38 +305,8 @@
                 </div>
               </form>
 
-
-
             </div>
 
-            <!--REVIEW TAB-->
-            <div ng-show="tab.isSet(3)">
-              <!--REVIEWS-->
-              <div ng-repeat="review in recipe.newRecipe.reviews">
-                <div style ='background-color:#ffd171; border-color: #ffd171; color:#9b350d' class="well row text-center">
-                    <h3>{{review}}</h3>
-                </div>
-              </div><!--ng-repeat end-->
-
-              <!--REVIEW FORM-->
-              
-              <form ng-submit='reviewCtrl.addReview(recipe.newRecipe)' ng-controller='ReviewController as reviewCtrl' name='reviewForm'>
-                <!--  Live Preview -->
-                <div style ='background-color:#cb2e01; border-color: #cb2e01; color:#ffd171' class="well row text-center">
-                  <h3>{{reviewCtrl.review}}</h3>
-                </div>
-                <!--FORM-->
-                <div style ='background-color:#ffd171; border-color: #ffd171; color:#9b350d' class="well row text-center">
-                  <input ng-model='reviewCtrl.review' type="text" placeholder="Review" required>
-                </div>
-                <!--ADD STEP-->
-                <div class="row text-center">
-                  <button style='background-color:#cb2e01' type="submit" class="btn">
-                    <i style="font-size:3.5em; color:#ffd171" class='glyphicon glyphicon-plus'></i>
-                  </button>
-                </div>
-              </form>
-            </div>
           </section>
           </div>
           <!--SUBMIT RECIPE-->
