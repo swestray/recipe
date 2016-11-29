@@ -79,25 +79,22 @@
 	app.controller('RecipeController', function(){
 		this.product = recipes;
 		this.newRecipe = {
-			name: "tryna",
-			description: "do dat shi",
-			picture:"https://farm4.staticflickr.com/3261/2801924702_ffbdeda927_d.jpg",
-			ingredients:[
-				{
-					quantity:1,
-					unit: 'berry',
-					item: 'boy'
-				}
-			],
+			name: "",
+			description: "",
+			picture:"",
+			ingredients:[],
 			steps:[],
-			reviews:['fucking sick braj', 'oh heck yes'],
+			reviews:[],
 			score: 0
 		};
-		this.addRecipe = function(product, title, descript){
+		this.addRecipe = function(product, title, descript, pic){
+			this.newRecipe.name = title;
+			this.newRecipe.description = descript;
+			this.newRecipe.picture = 'pic';
 			recipes.push(product);
 			this.newRecipe = {
-				name: title,
-				description: descript,
+				name: "",
+				description: "",
 				picture:"",
 				ingredients:[],
 				steps:[],

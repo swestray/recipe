@@ -54,7 +54,7 @@
           </button>
         </div>
         <!--TITLE and DESCRIPTION-->
-        <div class="text-center col-xs-9">
+        <div class="text-center col-xs-10">
           <h1 style="color:#ffd171"><strong>{{product.name | uppercase}}</strong></h1>
           <h4 style="color:#ffd171">{{product.description}}</h4>
         </div>
@@ -62,11 +62,12 @@
         <!--YUM AND YUCK BUTTONS-->
 
         <div class="col-xs-1" ng-controller='YumController as yumCtrl'>
-          <button class='btn pull-right' ng-click='yumCtrl.yum(product)' ng-init="yumCtrl.yumButton='yum';">
+          <button class='btn btn-warning pull-right' ng-click='yumCtrl.yum(product)' ng-init="yumCtrl.yumButton='yum';">
             {{yumCtrl.yumButton}}
           </button>
-          <h3 class="text-center" style="color:white">{{product.score}}</h3>
-          <button class='btn pull-right' ng-click='yumCtrl.yuck(product)' ng-init="yumCtrl.yuckButton='yuck';">
+
+          <h3 class="" style="color:#ffd171">{{product.score}}</h3>
+          <button class='btn btn-warning pull-right' ng-click='yumCtrl.yuck(product)' ng-init="yumCtrl.yuckButton='yuck';">
             {{yumCtrl.yuckButton}}
           </button>
         </div>
@@ -180,21 +181,19 @@
     <div id="addRecipe" class="collapse">
 
       <!--FORM for PHOTO, TITLE, and DESCRIPTION-->
-      <form class="row">
+      <ng-form class="row">
         <div style="background-color:#9b350d; border-color: #9b350d" class="well">
         <!--TITLE and DESCRIPTION-->
         <div class="text-center">
           <h1 style="letter-spacing: 6px; color:#ffd171"><strong>{{name | uppercase}}</strong></h1>
           <h4 style="color:#ffd171">{{description}}</h4>
-          <img class="img-responsive img-rounded" ng-src="{{recipe.newRecipe.picture}}">
+          <img class="img-responsive img-rounded" ng-src="'thePhoto'">
         </div>
         <div>
           <input ng-model='name' type="text" placeholder='Title' name="">
           <input ng-model='description' type="text" placeholder='description' name="">
           <input ng-model='thePhoto' type="text" placeholder="pictureUrl" name="">
-          <button ng-click="recipe.newRecipe.picture = 'thePhoto'">upload</button>
         </div>
-      </form>
 
           <!--TABS-->
           <section class="tab" ng-controller="TabController as tab">
@@ -310,9 +309,10 @@
           </section>
           </div>
           <!--SUBMIT RECIPE-->
-          <button ng-click="recipe.addRecipe(recipe.newRecipe)" style='background-color:#cb2e01; font-size: 20px; color: #ffd171' class="btn pull-right">
+          <button ng-click="recipe.addRecipe(recipe.newRecipe, name, description, thePhoto)" style='background-color:#cb2e01; font-size: 20px; color: #ffd171' class="btn pull-right">
             Submit Recipe
           </button>
+      </ng-form>
     </div><!--collaspe end-->
 
     </div><!--controller end-->
