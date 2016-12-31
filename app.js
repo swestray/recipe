@@ -17,25 +17,25 @@
 				}
 				],
 			steps: [
-			'add the yogurt', 'do it bitch', 'add the bitch!'
+			'add the yogurt', 'do it', 'add!'
 			],
 			reviews: [],
 			score:3
 		},
 		{
-			name: "poopoo",
-			description: "it's Stinky!",
+			name: "dish",
+			description: "mealie",
 			picture:'',
 			ingredients:[
 				{
-					quantity: '69',
+					quantity: '1',
 					unit: 'Tbl',
-					item: 'Whores'
+					item: 'Hello'
 				},
 				{
 					quantity: '2',
 					unit: 'cup',
-					item: 'Papi'
+					item: 'World'
 				}
 				],
 			steps: [
@@ -45,8 +45,8 @@
 			score:2
 		},
 		{
-			name: "margot",
-			description: "is being a real Bitch",
+			name: "dog",
+			description: "dont eat",
 			picture:"",
 			ingredients:[],
 			steps:[],

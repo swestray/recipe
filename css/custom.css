@@ -1,6 +1,10 @@
 body{
 	background-color: #e57100;
 }
+#addBtn:hover,
+#addBtn:focus {
+	background-color: white;
+}
 .nav>li>a{
 	color:#ffd171;
 	font-size: 20px;
