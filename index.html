@@ -143,14 +143,14 @@
 
             <!--REVIEW TAB-->
             <div ng-show="tab.isSet(3)">
-              <!--STEPS-->
+              <!--REVIEWS-->
               <div ng-repeat="review in product.reviews">
                 <div style ='background-color:#ffd171; border-color: #ffd171; color:#9b350d' class="well-sm row text-center">
                     <h3>{{review}}</h3>
                 </div>
               </div><!--ng-repeat end-->
 
-              <!--STEP FORM-->
+              <!--REVIEW FORM-->
               <form ng-submit='reviewCtrl.addReview(product)' ng-controller='ReviewController as reviewCtrl' name='reviewForm'>
                 <!--  Live Preview -->
                 <div style ='background-color:#cb2e01; border-color: #cb2e01; color:#ffd171;' class="well-sm row text-center">
@@ -159,7 +159,7 @@
                 <div style ='background-color:#ffd171; border-color: #ffd171; color:#9b350d' class="well-sm row text-center">
                   <textarea ng-model='reviewCtrl.review'></textarea>
                 </div>
-                <!--ADD STEP-->
+                <!--ADD REVIEW-->
                 <div class="row text-center">
                   <button id="addBtn" style='background-color:#cb2e01' type="submit" class="btn">
                     <i style="font-size:3.5em; color:#ffd171" class='glyphicon glyphicon-plus'></i>
